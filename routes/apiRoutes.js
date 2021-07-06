@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Router } = require("express");
+// const { Router } = require("express");
 const Workout = require('../models/Workout');
 
 router.post('/api/workouts', (req, res) => {
@@ -78,4 +78,4 @@ router.delete('/api/workouts', (req, res) => {
 })
 
 
-module.exports = router
+module.exports = router;
