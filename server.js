@@ -11,10 +11,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost/workout', {
-    useNewUrlParser: true,
-    useFindAndModify: false
-})
+// mongoose.connect('mongodb://localhost/workout', {
+//     useNewUrlParser: true,
+//     useFindAndModify: false
+// })
+
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/workout-tracker',
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false 
+    }
+);
 
 app.use(require('./routes/apiRoutes'));
 app.use(require('./routes/htmlRoutes'));
